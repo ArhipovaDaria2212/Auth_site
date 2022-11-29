@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FilmController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +14,7 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-    Route::get('user/{city?}', [UserController::class, 'show']);
-    //Route::get('user', [UserController::class, 'all']);
-    //Route::get('user', [UserController::class, 'name']);
+    // Route::get('user/', [UserController::class, 'show']);
+    Route::get('/film', [FilmController::class, 'form']);
+    Route::get('/result', [FilmController::class, 'result',]);
+

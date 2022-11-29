@@ -1,19 +1,25 @@
 <?php
-	namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
+    use Illuminate\Support\Facades\DB;
+    use App\Models\User;
+    use App\Models\Post;
+    use App\Models\profiles;
+    
+    use App\Models\countries;
+    use App\Models\cities;
+    use App\Models\positions;
+    use App\Models\userps;
 	
 	class UserController extends Controller 
 	{
-		public function show($city)
-		{
-        return view('user.show', ['city' => $city]);
+    	public function show3(){
+      	$userps=userps::all();
+      	foreach ($userps as $city) {
+			var_dump($city);
+			var_dump($city->cities);
+      	  	dump($city->positions);
 		}
-        public function all()
-		{
-			return view('user.all', ['title' => 'page title', 'text' => 'page content']);
-		}
-        public function name()
-		{
-			return view('user.name', ['title' => 'page title', 'text' => 'page content']);
+      	return view('User.showes', ['userps' => $userps]);
 		}
 	}
 ?>
