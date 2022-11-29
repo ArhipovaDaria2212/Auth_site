@@ -8,8 +8,8 @@ use App\Models\Film;
 
 class Genres extends Model
 {
-  public function Film()
-  {
-    return $this->belongsToMany(Film::class);
-  }
+    public function Film()
+    {
+        return $this->belongsToMany(Film::class);
+    }
 }

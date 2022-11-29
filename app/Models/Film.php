@@ -9,8 +9,8 @@ use App\Models\Genres;
 class Film extends Model
 {
     public function genres()
-  {
-    return $this->belongsToMany(Genres::class);
-  }
-  public $timestamps = false;
+    {
+        return $this->belongsToMany(Genres::class);
+    }
+    public $timestamps = false;
 }

@@ -9,6 +9,5 @@ use App\Models\Genres;
 
 class FilmGenre extends Model
 {
-  public $timestamps = false;
-    
+    public $timestamps = false; 
 }

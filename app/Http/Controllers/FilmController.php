@@ -47,8 +47,6 @@ class FilmController extends Controller
         $genres = Genres::all();
         return view('film.form', ['producers' => $producers, 'genres'=>$genres]);
       }
-  
-
-    }
+}
 
 

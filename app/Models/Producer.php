@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Film;
 class Producer extends Model
 {
-  public function film()
-  {
-    return $this->hasMany(film::class);
-  }
+    public function film()
+    {
+        return $this->hasMany(film::class);
+    }
 }
