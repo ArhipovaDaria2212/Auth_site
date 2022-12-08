@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Producer;
 use App\Models\Genres;
 use App\Models\FilmGenre;
+use App\Models\User;
+
 
 class FilmController extends Controller
 {
@@ -41,12 +43,41 @@ class FilmController extends Controller
         return redirect('/film');
     
       }
-      public function form()
+      public function form(Request $request)
       {
-        $producers = Producer::all();
-        $genres = Genres::all();
-        return view('film.form', ['producers' => $producers, 'genres'=>$genres]);
+        if ($request->session()->has('user')) {
+				  $producers = Producer::all();
+				  $genres = Genres::all();
+
+				  return view('film.form', ['producers' => $producers, 'genres'=>$genres]);
+			  }
+			  else{
+				  return redirect('/login');
+			  }
       }
+
+      public function login(Request $request){
+			  $request->session()->forget('user');
+			  return view('film.login');
+		  }
+
+		  public function loginresult(Request $request){
+			  $login = $request->input('login');
+			  $password = $request->input('password');
+			  $users = User::where('id_level', 1)->get();
+			
+
+			  foreach ($users as $user) {
+          if ($login == $user->lodin){
+            if ($password == $user->password){
+              $request->session()->put('user', $login);
+              return redirect('/film');
+            }
+          }
+        }
+        echo "Неверный логин или пароль";
+			  return view('film.login');
+		  }		
 }
 
 

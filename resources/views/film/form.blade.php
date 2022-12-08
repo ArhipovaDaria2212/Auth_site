@@ -7,7 +7,7 @@
     <title>Add Film</title>
     <style>
       body{
-          background-color: #a1b5a1;
+          background-color: #647364;
           color: #fff;
           text-align: center;
           padding: 100px 0 0 0;
@@ -23,7 +23,7 @@
       ::placeholder, select, input,
       select:focus, input:focus {
           color: #fff;
-          background: #a1b5a1;
+          background: #647364;
           border: 2px solid #fff;
           font-size: 15px;
       }

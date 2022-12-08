@@ -12,5 +12,8 @@ use App\Models\Film;
 
 class User extends Model
 {
-
+ public function level()
+  {
+    
+  }
 }
