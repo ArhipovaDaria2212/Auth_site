@@ -17,19 +17,13 @@ class FilmGenresSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('films_genres')->insert([
+		for ($i = 20; $i < 100000; $i++) {
+        	DB::table('films_genres')->insert([
 				[
-					'id_film' => 1,
-					'id_genre'  => 1,
-				],
-				[
-					'id_film' => 2,
-					'id_genre'  => 1,
-				],
-				[
-					'id_film' => 3,
-					'id_genre'  => 1,
+					'id_film' => $i,
+					'id_genre'  => random_int(1, 3),
 				],
 			]);
-    }
+    	}	
+	}
 }

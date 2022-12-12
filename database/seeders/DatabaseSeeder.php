@@ -28,16 +28,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-		$this->call([
-			GenresSeeder::class,
-			ProducersSeeder::class,
+		$this->call([	
 			FilmsSeeder::class,
 			FilmGenresSeeder::class,
-			LevelsSeeder::class,
-			TariffsSeeder::class,
-			FilmsTarrifsSeeder::class,
-			UsersSeeder::class,
-			OrdersSeeder::class,
 		]);
     }
     

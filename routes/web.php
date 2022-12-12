@@ -19,4 +19,6 @@ use App\Http\Controllers\FilmController;
     Route::get('/result', [FilmController::class, 'result',]);
     Route::get('/login', [FilmController::class, 'login']);
     Route::get('/loginresult', [FilmController::class, 'loginresult']);
+    Route::get('/', [FilmController::class, 'main']);
+
 

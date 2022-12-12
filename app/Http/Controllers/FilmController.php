@@ -8,7 +8,6 @@ use App\Models\Genres;
 use App\Models\FilmGenre;
 use App\Models\User;
 
-
 class FilmController extends Controller
 {
     public function show(Request $request)
@@ -58,6 +57,7 @@ class FilmController extends Controller
 
       public function login(Request $request){
 			  $request->session()->forget('user');
+			  $request->session()->forget('client');
 			  return view('film.login');
 		  }
 
@@ -65,7 +65,7 @@ class FilmController extends Controller
 			  $login = $request->input('login');
 			  $password = $request->input('password');
 			  $users = User::where('id_level', 1)->get();
-			
+			  $clients = User::where('id_level', 2)->get();
 
 			  foreach ($users as $user) {
           if ($login == $user->lodin){
@@ -75,9 +75,28 @@ class FilmController extends Controller
             }
           }
         }
+        foreach ($clients as $client) {
+          if ($login == $client->lodin){
+            if ($password == $client->password){
+              $request->session()->put('client', $login);
+              return redirect('/');
+            }
+          }
+        }
         echo "Неверный логин или пароль";
 			  return view('film.login');
 		  }		
+
+      public function main(Request $request){
+        if ($request->session()->has('client') || $request->session()->has('user')) {
+				  $films = film::paginate(25);
+          $producers = producer::all();
+          $genres = genres::all();
+
+          return view('film.main', ['films' => $films, 'producers' => $producers, 'genres'=>$genres]);
+			  }
+			  else{
+				  return redirect('/login');
+			  }
+      }
 }
-
-
